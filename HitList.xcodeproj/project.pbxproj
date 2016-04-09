@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D0461F091C52B39A001B3B68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0461F081C52B39A001B3B68 /* AppDelegate.swift */; };
-		D0461F0B1C52B39A001B3B68 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0461F0A1C52B39A001B3B68 /* ViewController.swift */; };
+		D0461F0B1C52B39A001B3B68 /* HitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0461F0A1C52B39A001B3B68 /* HitListViewController.swift */; };
 		D0461F0E1C52B39A001B3B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0461F0C1C52B39A001B3B68 /* Main.storyboard */; };
 		D0461F111C52B39A001B3B68 /* HitList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0461F0F1C52B39A001B3B68 /* HitList.xcdatamodeld */; };
 		D0461F131C52B39A001B3B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0461F121C52B39A001B3B68 /* Assets.xcassets */; };
 		D0461F161C52B39A001B3B68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0461F141C52B39A001B3B68 /* LaunchScreen.storyboard */; };
 		D0461F211C52B39A001B3B68 /* HitListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0461F201C52B39A001B3B68 /* HitListTests.swift */; };
 		D0461F2C1C52B39A001B3B68 /* HitListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0461F2B1C52B39A001B3B68 /* HitListUITests.swift */; };
+		D0C33A761CB922CC00AA9E3F /* CommitOnReturnTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C33A751CB922CC00AA9E3F /* CommitOnReturnTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* Begin PBXFileReference section */
 		D0461F051C52B39A001B3B68 /* HitList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HitList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0461F081C52B39A001B3B68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0461F0A1C52B39A001B3B68 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0461F0A1C52B39A001B3B68 /* HitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitListViewController.swift; sourceTree = "<group>"; };
 		D0461F0D1C52B39A001B3B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0461F101C52B39A001B3B68 /* HitList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HitList.xcdatamodel; sourceTree = "<group>"; };
 		D0461F121C52B39A001B3B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		D0461F271C52B39A001B3B68 /* HitListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HitListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0461F2B1C52B39A001B3B68 /* HitListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitListUITests.swift; sourceTree = "<group>"; };
 		D0461F2D1C52B39A001B3B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0C33A751CB922CC00AA9E3F /* CommitOnReturnTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitOnReturnTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +101,9 @@
 		D0461F071C52B39A001B3B68 /* HitList */ = {
 			isa = PBXGroup;
 			children = (
+				D0C33A741CB9228B00AA9E3F /* Utils */,
 				D0461F081C52B39A001B3B68 /* AppDelegate.swift */,
-				D0461F0A1C52B39A001B3B68 /* ViewController.swift */,
+				D0461F0A1C52B39A001B3B68 /* HitListViewController.swift */,
 				D0461F0C1C52B39A001B3B68 /* Main.storyboard */,
 				D0461F121C52B39A001B3B68 /* Assets.xcassets */,
 				D0461F141C52B39A001B3B68 /* LaunchScreen.storyboard */,
@@ -126,6 +129,14 @@
 				D0461F2D1C52B39A001B3B68 /* Info.plist */,
 			);
 			path = HitListUITests;
+			sourceTree = "<group>";
+		};
+		D0C33A741CB9228B00AA9E3F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D0C33A751CB922CC00AA9E3F /* CommitOnReturnTextFieldDelegate.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +271,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0461F111C52B39A001B3B68 /* HitList.xcdatamodeld in Sources */,
-				D0461F0B1C52B39A001B3B68 /* ViewController.swift in Sources */,
+				D0461F0B1C52B39A001B3B68 /* HitListViewController.swift in Sources */,
+				D0C33A761CB922CC00AA9E3F /* CommitOnReturnTextFieldDelegate.swift in Sources */,
 				D0461F091C52B39A001B3B68 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HitList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = avihu.turzion.com.HitList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -415,6 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HitList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = avihu.turzion.com.HitList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,6 +502,7 @@
 				D0461F321C52B39A001B3B68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0461F331C52B39A001B3B68 /* Build configuration list for PBXNativeTarget "HitListTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +511,7 @@
 				D0461F351C52B39A001B3B68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0461F361C52B39A001B3B68 /* Build configuration list for PBXNativeTarget "HitListUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +520,7 @@
 				D0461F381C52B39A001B3B68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
