@@ -15,14 +15,30 @@ class HitListViewController: UIViewController {
 
   @IBOutlet private weak var tableView: UITableView!
 
+  private lazy var managedContext: NSManagedObjectContext? = {
+    guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return nil }
+    return appDelegate.managedObjectContext
+  }()
+
+  private var commitOnReturnDelegate: CommitOnReturnTextFieldDelegate?
+
+}
+
+// MARK: Overriding ViewController life cycle functions
+
+extension HitListViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "\"The List\""
     tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kSimpleCellName)
     commitOnReturnDelegate = CommitOnReturnTextFieldDelegate(handler: saveNameFromAlertTextField)
   }
+}
 
-  @IBAction private func addName(sender: UIBarButtonItem) {
+// MARK: Outlet actions
+
+private extension HitListViewController {
+  @IBAction func addName(sender: UIBarButtonItem) {
     let addNameAlert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .Alert)
     let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { [weak self] action in
       guard let textField = addNameAlert.textFields?.first else { return }
@@ -37,15 +53,9 @@ class HitListViewController: UIViewController {
 
     presentViewController(addNameAlert, animated: true, completion: nil)
   }
-
-  private lazy var managedContext: NSManagedObjectContext? = {
-    guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return nil }
-    return appDelegate.managedObjectContext
-  }()
-
-  private var commitOnReturnDelegate: CommitOnReturnTextFieldDelegate?
-
 }
+
+// MARK: Conforming to UITableViewDataSource
 
 extension HitListViewController: UITableViewDataSource {
 
@@ -61,6 +71,8 @@ extension HitListViewController: UITableViewDataSource {
   }
   
 }
+
+// MARK: Private implementation
 
 private extension HitListViewController {
 
@@ -86,6 +98,8 @@ private extension HitListViewController {
   }
 
 }
+
+// MARK: Constants
 
 private let kPersonEntityName = "Person"
 private let kPersonNameKey = "name"
