@@ -65,21 +65,21 @@ extension HitListViewController: UITableViewDataSource {
 private extension HitListViewController {
 
   func saveNameFromAlertTextField(textField: UITextField) {
-    dismissViewControllerAnimated(true, completion: nil)
     guard let newName = textField.text else { return }
+    dismissViewControllerAnimated(true, completion: nil)
     saveName(newName)
     tableView.reloadData()
   }
 
   func saveName(name: String) {
-    guard let managedContext = managedContext else { return }
-    guard let entity = NSEntityDescription.entityForName(kPersonEntityName, inManagedObjectContext: managedContext) else { return }
+    guard let managedContext = managedContext, entity = NSEntityDescription.entityForName(kPersonEntityName, inManagedObjectContext: managedContext) else { return }
 
     let person = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext)
     person.setValue(name, forKey: kPersonNameKey)
 
     do {
       try managedContext.save()
+      people.append(person)
     } catch let error as NSError {
       print("Could not save \(error). \(error.userInfo)")
     }
