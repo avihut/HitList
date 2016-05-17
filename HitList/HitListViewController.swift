@@ -15,24 +15,39 @@ class HitListViewController: UIViewController {
 
   @IBOutlet private weak var tableView: UITableView!
 
+  private var appDelegate: AppDelegate? {
+    return UIApplication.sharedApplication().delegate as? AppDelegate
+  }
+
   private lazy var managedContext: NSManagedObjectContext? = {
-    guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return nil }
+    guard let appDelegate = self.appDelegate else { return nil }
     return appDelegate.managedObjectContext
+  }()
+
+  private lazy var peopleFetchRequest: NSFetchRequest = {
+    return NSFetchRequest(entityName: kPersonEntityName)
   }()
 
   private var commitOnReturnDelegate: CommitOnReturnTextFieldDelegate?
 
 }
 
-// MARK: Overriding ViewController life cycle functions
+// MARK: View controller life cycle
 
 extension HitListViewController {
+
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "\"The List\""
     tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kSimpleCellName)
     commitOnReturnDelegate = CommitOnReturnTextFieldDelegate(handler: saveNameFromAlertTextField)
   }
+
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    fetchPeopleFromLocalStore()
+  }
+
 }
 
 // MARK: Outlet actions
@@ -75,6 +90,17 @@ extension HitListViewController: UITableViewDataSource {
 // MARK: Private implementation
 
 private extension HitListViewController {
+
+  func fetchPeopleFromLocalStore() {
+    guard let managedContext = managedContext else { return }
+    do {
+      if let results = try managedContext.executeFetchRequest(peopleFetchRequest) as? [NSManagedObject] {
+        people = results
+      }
+    } catch let error as NSError {
+      print("Could not fetch \(error), \(error.userInfo)")
+    }
+  }
 
   func saveNameFromAlertTextField(textField: UITextField) {
     guard let newName = textField.text else { return }
